@@ -1,15 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Deadsideinfo</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+    <title>Deadside Info</title>
+
+    <meta name="description" content="" />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.3.45/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="nav-fixed">
+
+    <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
+      <%= link_to "Deadside Info", root_url, class: "navbar-brand d-sm-block" %>
+      <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="navbar-nav align-items-center ml-auto" style="display: none;">
+        <li class="nav-item no-caret mr-3">
+          <a class="nav-link" href="#">
+            <div class="d-inline d-md-none font-weight-500">Docs</div>
+            <div class="d-none d-md-inline font-weight-500">Documentation</div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sidenav shadow-right sidenav-light">
+          <div class="sidenav-menu">
+            <div class="nav accordion" id="accordionSidenav">
+              <div class="sidenav-menu-heading"></div>
+
+              <%= link_to root_url, class: "nav-link" do %>
+                <div class="nav-link-icon"><i class="fas fa-map-marked-alt"></i></div>
+                World Map
+              <% end %>
+
+              <div class="sidenav-menu-heading">Items</div>
+
+              <a class="nav-link display-none" href="charts.html">
+                <div class="nav-link-icon"><span class="mdi mdi-pistol mdi-icon-size"></span></div>
+                Weapons
+              </a>
+
+              <a class="nav-link display-none" href="charts.html">
+                <div class="nav-link-icon"><span class="mdi mdi-ammunition mdi-icon-size"></span></div>
+                Ammo
+              </a>
+
+              <a class="nav-link display-none" href="charts.html">
+                <div class="nav-link-icon"><i class="fas fa-tshirt"></i></div>
+                Equipment
+              </a>
+
+              <a class="nav-link display-none" href="charts.html">
+                <div class="nav-link-icon"><i class="fas fa-clinic-medical"></i></div>
+                Medicine
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div id="layoutSidenav_content">
+        <main class="h-100">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+    
   </body>
 </html>

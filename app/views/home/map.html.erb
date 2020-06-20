@@ -1,0 +1,33 @@
+<div class="container-fluid h-100 p-0">
+  <div class="row h-100">
+    <div class="col-12 h-100">
+      <div id='map' class="w-100 h-100"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var map = L.map('map', {
+      minZoom: 1,
+      maxZoom: 5,
+      center: [-200, 250],
+      zoom: 3,
+      crs: L.CRS.Simple,
+      attributionControl: false
+    });
+
+    // dimensions of the image
+    var w = 4096 * 2,
+        h = 4097 * 2,
+        url = '<%= asset_path("deadside_map.png") %>';
+
+    // calculate the edges of the image, in coordinate space
+    var southWest = map.unproject([0, h], map.getMaxZoom() - 1);
+    var northEast = map.unproject([w, 0], map.getMaxZoom() - 1);
+    var bounds = new L.LatLngBounds(southWest, northEast);
+
+    L.imageOverlay(url, bounds).addTo(map);
+
+    // tell leaflet that the map is exactly as big as the image
+    map.setMaxBounds(bounds);
+</script>
