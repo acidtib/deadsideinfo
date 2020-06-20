@@ -1,0 +1,36 @@
+version: '3.3'
+
+volumes:
+  postgres-data:
+    driver: local
+
+networks:
+  internal:
+
+services:
+  postgresql:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    environment: 
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - internal
+  
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec puma -C config/puma.rb
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
+    depends_on:
+      - postgresql
+    networks:
+      - internal
