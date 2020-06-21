@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_045953) do
+ActiveRecord::Schema.define(version: 2020_06_21_201615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ammo_uses", force: :cascade do |t|
+    t.bigint "ammo_id"
+    t.bigint "weapon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ammo_id"], name: "index_ammo_uses_on_ammo_id"
+    t.index ["weapon_id"], name: "index_ammo_uses_on_weapon_id"
+  end
 
   create_table "ammos", force: :cascade do |t|
     t.bigint "category_id"
@@ -42,9 +51,12 @@ ActiveRecord::Schema.define(version: 2020_06_21_045953) do
     t.integer "mag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "weapon_type"
     t.index ["category_id"], name: "index_weapons_on_category_id"
   end
 
+  add_foreign_key "ammo_uses", "ammos"
+  add_foreign_key "ammo_uses", "weapons"
   add_foreign_key "ammos", "categories"
   add_foreign_key "weapons", "categories"
 end

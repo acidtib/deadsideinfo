@@ -16,6 +16,7 @@ end
 #  name        :string
 #  sell        :integer
 #  slug        :string
+#  weapon_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :bigint

@@ -1,5 +1,6 @@
 class Weapon < ApplicationRecord
   belongs_to :category
+  has_many :ammo_uses
 end
 
 # == Schema Information
@@ -12,6 +13,7 @@ end
 #  name        :string
 #  sell        :integer
 #  slug        :string
+#  weapon_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :bigint

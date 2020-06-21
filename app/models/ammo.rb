@@ -1,5 +1,6 @@
 class Ammo < ApplicationRecord
   belongs_to :category
+  has_many :ammo_uses
 end
 
 # == Schema Information

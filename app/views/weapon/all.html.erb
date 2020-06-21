@@ -5,7 +5,7 @@
         <div class="page-header-icon"><span class="mdi mdi-pistol"></span></div>
         <span>Weapons</span>
       </h1>
-      <div class="page-header-subtitle">A simplified page header for use with the dashboard layout</div>
+      <div class="page-header-subtitle">All of the weapons found in the world</div>
     </div>
   </div>
 </div>
@@ -19,21 +19,26 @@
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-3">
-              <img src="..." class="card-img" alt="...">
+              <%= image_tag "weapons/#{weapon.slug}.png", class: "card-img" %>
             </div>
             <div class="col-9">
-              <div class="card-body">
-                <h5 class="card-title"><%= weapon.name %> - <small class="text-muted">Pistol</small></h5>
+              <div class="card-body pb-1">
+                <h5 class="card-title"><%= weapon.name %> - <small class="text-muted"><%= weapon.weapon_type %></small></h5>
                 
                 <div class="row">
                   <div class="col-6">
-                    <p class="card-text"><b>Ammo:</b> </p>
-                    <p class="card-text"><b>Mag Size:</b> <%= weapon.mag %></p>
+                    <p class="card-text mb-1">
+                      <b>Ammo:</b> 
+                      <% weapon.ammo_uses.each do |ammo| %>
+                        <%= ammo.ammo.name %>
+                      <% end %>
+                    </p>
+                    <p class="card-text mb-1"><b>Mag Size:</b> <%= weapon.mag %></p>
                   </div>
 
                   <div class="col-6">
-                    <p class="card-text"><b>Buy:</b> <%= number_to_currency(weapon.buy, precision: 0) %></p>
-                    <p class="card-text"><b>Sell:</b> <%= number_to_currency(weapon.sell, precision: 0) %></p>
+                    <p class="card-text mb-1"><b>Buy:</b> <%= number_to_currency(weapon.buy, precision: 0) %></p>
+                    <p class="card-text mb-1"><b>Sell:</b> <%= number_to_currency(weapon.sell, precision: 0) %></p>
                   </div>
                 </div>
               </div>
