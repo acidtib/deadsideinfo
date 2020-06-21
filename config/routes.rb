@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get '/food-drinks', to: 'food_drink#all', as: 'food_drink'
+  get '/food-drinks/:slug', to: 'food_drink#show', as: 'food_drink_show'
+
   get '/weapons', to: 'weapon#all', as: 'weapons'
   get '/weapons/:slug', to: 'weapon#show', as: 'weapons_show'
 
