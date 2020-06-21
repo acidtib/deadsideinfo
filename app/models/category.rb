@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   has_many :weapons
   has_many :ammos
+  has_many :medicines
 end
 
 # == Schema Information

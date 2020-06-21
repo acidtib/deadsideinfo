@@ -1,0 +1,40 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  name: MyString
+  slug: MyString
+  buy: 1
+  sell: 1
+  heal: 1
+
+two:
+  category: two
+  name: MyString
+  slug: MyString
+  buy: 1
+  sell: 1
+  heal: 1
+
+# == Schema Information
+#
+# Table name: medicines
+#
+#  id          :bigint           not null, primary key
+#  buy         :integer
+#  heal        :integer
+#  name        :string
+#  sell        :integer
+#  slug        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :bigint
+#
+# Indexes
+#
+#  index_medicines_on_category_id  (category_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (category_id => categories.id)
+#

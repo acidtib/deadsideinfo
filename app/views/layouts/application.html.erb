@@ -63,15 +63,15 @@
                 Ammo
               <% end %>
 
-              <a class="nav-link" href="charts.html">
+              <%= link_to weapons_path, class: "nav-link" do %>
                 <div class="nav-link-icon"><i class="fas fa-tshirt"></i></div>
                 Equipment
-              </a>
+              <% end %>
 
-              <a class="nav-link" href="charts.html">
+              <%= link_to medicine_path, class: "nav-link" do %>
                 <div class="nav-link-icon"><i class="fas fa-clinic-medical"></i></div>
                 Medicine
-              </a>
+              <% end %>
             </div>
           </div>
         </nav>

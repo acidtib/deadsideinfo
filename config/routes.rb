@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/ammo', to: 'ammo#all', as: 'ammo'
   get '/ammo/:slug', to: 'ammo#show', as: 'ammo_show'
 
+  get '/medicine', to: 'medicine#all', as: 'medicine'
+  get '/medicine/:slug', to: 'medicine#show', as: 'medicine_show'
+
   root to: 'home#map'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

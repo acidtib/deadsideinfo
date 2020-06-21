@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_201615) do
+ActiveRecord::Schema.define(version: 2020_06_21_222344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 2020_06_21_201615) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "medicines", force: :cascade do |t|
+    t.bigint "category_id"
+    t.string "name"
+    t.string "slug"
+    t.integer "buy"
+    t.integer "sell"
+    t.integer "heal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_medicines_on_category_id"
+  end
+
   create_table "weapons", force: :cascade do |t|
     t.bigint "category_id"
     t.string "name"
@@ -58,5 +70,6 @@ ActiveRecord::Schema.define(version: 2020_06_21_201615) do
   add_foreign_key "ammo_uses", "ammos"
   add_foreign_key "ammo_uses", "weapons"
   add_foreign_key "ammos", "categories"
+  add_foreign_key "medicines", "categories"
   add_foreign_key "weapons", "categories"
 end
