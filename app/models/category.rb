@@ -3,6 +3,7 @@ class Category < ApplicationRecord
   has_many :ammos
   has_many :medicines
   has_many :food_drinks
+  has_many :equipment
 end
 
 # == Schema Information

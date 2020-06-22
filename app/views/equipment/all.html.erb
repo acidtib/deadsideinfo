@@ -1,0 +1,48 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <div class="page-header-content py-5">
+      <h1 class="page-header-title">
+        <div class="page-header-icon"><i class="fas fa-tshirt" style="font-size: 28px; margin-top: -3px;"></i></div>
+        <span>Equipment</span>
+      </h1>
+      <div class="page-header-subtitle">All of the equipment found in the world</div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-12">
+
+      <% @equipments.each do |equipment| %>
+      
+        <div class="card mb-3">
+          <div class="row no-gutters" style="background: #0d0d0d;">
+            <div class="col-3 align-self-center">
+              <%= image_tag "equipment/#{equipment.slug}.png", class: "w-100" %>
+            </div>
+            <div class="col-9" style="background: #ffffff;">
+              <div class="card-body pb-3">
+                <h5 class="card-title"><%= equipment.name %></h5>
+                
+                <div class="row">
+                  <div class="col-6">
+                    <p class="card-text mb-1"><b>Armor:</b> <%= equipment.armor || "n/a" %></p>
+                    <p class="card-text mb-1"><b>Slots:</b> <%= equipment.slots || "n/a" %></p>
+                  </div>
+
+                  <div class="col-6">
+                    <p class="card-text mb-1"><b>Buy:</b> <%= number_to_currency(equipment.buy, precision: 0) || "n/a" %></p>
+                    <p class="card-text mb-1"><b>Sell:</b> <%= number_to_currency(equipment.sell, precision: 0) || "n/a" %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
