@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_011756) do
+ActiveRecord::Schema.define(version: 2020_06_23_200053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 2020_06_22_011756) do
     t.index ["category_id"], name: "index_medicines_on_category_id"
   end
 
+  create_table "tools", force: :cascade do |t|
+    t.bigint "category_id"
+    t.string "name"
+    t.string "slug"
+    t.integer "buy"
+    t.integer "sell"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tools_on_category_id"
+  end
+
   create_table "weapons", force: :cascade do |t|
     t.bigint "category_id"
     t.string "name"
@@ -100,5 +111,6 @@ ActiveRecord::Schema.define(version: 2020_06_22_011756) do
   add_foreign_key "equipment", "categories"
   add_foreign_key "food_drinks", "categories"
   add_foreign_key "medicines", "categories"
+  add_foreign_key "tools", "categories"
   add_foreign_key "weapons", "categories"
 end

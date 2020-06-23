@@ -33,3 +33,5 @@ load File.join(Rails.root, 'db', 'items', 'equipment.rb')
 load File.join(Rails.root, 'db', 'items', 'food_drinks.rb')
 
 load File.join(Rails.root, 'db', 'items', 'medicine.rb')
+
+load File.join(Rails.root, 'db', 'items', 'tools.rb')

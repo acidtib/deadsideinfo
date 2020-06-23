@@ -4,6 +4,7 @@ class Category < ApplicationRecord
   has_many :medicines
   has_many :food_drinks
   has_many :equipment
+  has_many :tools
 end
 
 # == Schema Information
