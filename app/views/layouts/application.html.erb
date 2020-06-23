@@ -7,7 +7,7 @@
   
     <title>Deadside Info</title>
 
-    <meta name="description" content="" />
+    <meta name="description" content="Welcome to the Deadside Info! List of discovered items and their respective vendor buy and sell values in the game." />
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -86,6 +86,19 @@
         <main class="h-100">
           <%= yield %>
         </main>
+        
+        <% unless current_page?(root_url) %>
+          <footer class="footer mt-auto footer-light">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 small">Deadside Info</div>
+                <div class="col-md-6 text-md-right small">
+                  This project is not associated with Bad Pixel
+                </div>
+              </div>
+            </div>
+          </footer>
+        <% end %>
       </div>
     </div>
     
