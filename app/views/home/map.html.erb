@@ -35,4 +35,21 @@
 
     // tell leaflet that the map is exactly as big as the image
     map.setMaxBounds(bounds);
+
+    // markers
+    var southSafeZone = L.circle([-243.6, 273], {
+      color: '#536610',
+      fillColor: '#3c3e25',
+      fillOpacity: 0.5,
+      radius: 8.6
+    }).addTo(map);
+    southSafeZone.bindPopup("South Safe Zone");
+
+    var northSafeZone = L.circle([-140.3, 256], {
+      color: '#536610',
+      fillColor: '#3c3e25',
+      fillOpacity: 0.5,
+      radius: 8.1
+    }).addTo(map);
+    northSafeZone.bindPopup("North Safe Zone");
 </script>
