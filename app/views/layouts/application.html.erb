@@ -61,7 +61,7 @@
                 World Map
               <% end %>
 
-              <div class="sidenav-menu-heading">Items</div>
+              <div class="sidenav-menu-heading">World Items</div>
               
               <%= link_to weapons_path, class: "nav-link" do %>
                 <div class="nav-link-icon"><span class="mdi mdi-pistol mdi-icon-size"></span></div>
@@ -79,18 +79,23 @@
               <% end %>
 
               <%= link_to medicine_path, class: "nav-link" do %>
-                <div class="nav-link-icon"><i class="fas fa-clinic-medical"></i></div>
+                <div class="nav-link-icon" style="margin-left: 2px;"><i class="fas fa-clinic-medical"></i></div>
                 Medicine
               <% end %>
 
               <%= link_to food_drink_path, class: "nav-link" do %>
-                <div class="nav-link-icon"><i class="fas fa-utensils mr-1"></i></div>
+                <div class="nav-link-icon" style="margin-left: 2px;"><i class="fas fa-utensils mr-1"></i></div>
                 Food/Drinks
               <% end %>
 
               <%= link_to tools_path, class: "nav-link" do %>
-                <div class="nav-link-icon"><i class="fas fa-tools mr-1"></i></div>
+                <div class="nav-link-icon" style="margin-right: 10px;"><i class="fas fa-tools"></i></div>
                 Tools
+              <% end %>
+
+              <%= link_to materials_path, class: "nav-link" do %>
+                <div class="nav-link-icon" style="margin-right: 9px;"><i class="fas fa-hammer"></i></div>
+                Materials
               <% end %>
             </div>
           </div>

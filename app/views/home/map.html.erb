@@ -11,9 +11,10 @@
       minZoom: 1,
       maxZoom: 5,
       center: [-200, 250],
-      zoom: 3,
+      zoom: 2,
       crs: L.CRS.Simple,
-      attributionControl: false
+      attributionControl: false,
+      zoomControl: false
     });
 
     // dimensions of the image
@@ -27,6 +28,10 @@
     var bounds = new L.LatLngBounds(southWest, northEast);
 
     L.imageOverlay(url, bounds).addTo(map);
+
+    L.control.zoom({
+      position: 'bottomright'
+    }).addTo(map);
 
     // tell leaflet that the map is exactly as big as the image
     map.setMaxBounds(bounds);

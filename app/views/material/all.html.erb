@@ -1,0 +1,46 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <div class="page-header-content py-5">
+      <h1 class="page-header-title">
+        <div class="page-header-icon"><i class="fas fa-hammer" style="font-size: 28px; margin-top: -3px;"></i></div>
+        <span>Materials</span>
+      </h1>
+      <div class="page-header-subtitle">All of the materials found in the world</div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-12">
+
+      <% @materials.each do |material| %>
+      
+        <div class="card mb-3">
+          <div class="row no-gutters" style="background: #0d0d0d;">
+            <div class="col-3 align-self-center">
+              <%= image_tag "materials/#{material.slug}.png", class: "w-100" %>
+            </div>
+            <div class="col-9" style="background: #ffffff;">
+              <div class="card-body pb-3">
+                <h5 class="card-title"><%= material.name %></h5>
+                
+                <div class="row">
+                  <div class="col-6">
+                  </div>
+
+                  <div class="col-6">
+                    <p class="card-text mb-1"><b>Buy:</b> <%= number_to_currency(material.buy, precision: 0) || "n/a" %></p>
+                    <p class="card-text mb-1"><b>Sell:</b> <%= number_to_currency(material.sell, precision: 0) || "n/a" %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get '/materials', to: 'material#all', as: 'materials'
+  # get '/materials/:slug', to: 'material#show', as: 'materials_show'
+
   get '/tools', to: 'tool#all', as: 'tools'
   # get '/tools/:slug', to: 'tool#show', as: 'tools_show'
 

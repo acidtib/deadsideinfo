@@ -13,7 +13,8 @@ categories = [
   {name: "Equipment"},
   {name: "Food/Drinks"},
   {name: "Medicine"},
-  {name: "Tools"}
+  {name: "Tools"},
+  {name: "Materials"}
 ]
 
 categories.each do |cat|
@@ -35,3 +36,5 @@ load File.join(Rails.root, 'db', 'items', 'food_drinks.rb')
 load File.join(Rails.root, 'db', 'items', 'medicine.rb')
 
 load File.join(Rails.root, 'db', 'items', 'tools.rb')
+
+load File.join(Rails.root, 'db', 'items', 'materials.rb')
