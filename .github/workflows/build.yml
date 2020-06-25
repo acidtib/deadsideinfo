@@ -28,3 +28,9 @@ jobs:
         tag: latest
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+  
+    - name: Deploy Webhook
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: ${{ secrets.PORTAINER_WEBHOOK }}
+        method: 'POST'
