@@ -13,4 +13,9 @@ body, html {
   font-size: 18px;
 }
 
-@import 'home.scss';
+
+@media (max-width: 768px) {
+  .leaflet-bottom .leaflet-control {
+    margin-bottom: 84px!important;
+  }
+}
