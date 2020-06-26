@@ -52,4 +52,38 @@
       radius: 8.1
     }).addTo(map);
     northSafeZone.bindPopup("North Safe Zone");
+
+    var LocationIcon = L.Icon.extend({
+      options: {
+        iconSize:     [25, 75],
+        popupAnchor:  [0, -10]
+      }
+    });
+
+    var militaryIcon = new LocationIcon({iconUrl: '<%= asset_path("map/base.svg") %>'});
+    var caveIcon = new LocationIcon({iconUrl: '<%= asset_path("map/cave.svg") %>'});
+    var deadIcon = new LocationIcon({iconUrl: '<%= asset_path("map/dead.svg") %>'});
+    var infoIcon = new LocationIcon({iconUrl: '<%= asset_path("map/info.svg") %>'});
+
+    // military
+    L.marker([-215.6, 244.1], {icon: militaryIcon}).bindPopup("Military Outpost").addTo(map);
+    L.marker([-162.7, 319.8], {icon: militaryIcon}).bindPopup("Military Base").addTo(map);
+    L.marker([-166, 321], {icon: militaryIcon}).bindPopup("Military Outpost").addTo(map);
+    L.marker([-149, 215], {icon: militaryIcon}).bindPopup("Military Checkpoint").addTo(map);
+    L.marker([-139.5, 218.4], {icon: militaryIcon}).bindPopup("Military Checkpoint").addTo(map);
+    L.marker([-188, 237], {icon: militaryIcon}).bindPopup("Military Outpost").addTo(map);
+
+    // info
+    L.marker([-150, 210], {icon: infoIcon}).bindPopup("Lumberjack Camp").addTo(map);
+    L.marker([-185.5, 238], {icon: infoIcon}).bindPopup("Radio Tower").addTo(map);
+    L.marker([-222.7, 270.5], {icon: infoIcon}).bindPopup("Sawmill").addTo(map);
+
+    // cave
+    L.marker([-161, 280.2], {icon: caveIcon}).bindPopup("Secret Cave").addTo(map);
+    L.marker([-194, 327], {icon: caveIcon}).bindPopup("Secret Cave").addTo(map);
+
+    // dead
+    L.marker([-194.5, 335.2], {icon: deadIcon}).bindPopup("NPC Camp").addTo(map);
+    L.marker([-218, 216.5], {icon: deadIcon}).bindPopup("NPC Camp").addTo(map);
+    L.marker([-129.5, 241], {icon: deadIcon}).bindPopup("NPC Camp").addTo(map);
 </script>
