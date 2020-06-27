@@ -11,7 +11,9 @@ tools = [
   {name: "Flashlight", slug: "flashlight-2", buy: 3000, sell: 1200},
   {name: "Walkie-Talkie", slug: "walkie-talkie", buy: 7000, sell: 3000},
   {name: "Lighter", slug: "lighter-1", buy: 500, sell: 100},
-  {name: "Lighter", slug: "lighter-2", buy: 750, sell: 150}
+  {name: "Lighter", slug: "lighter-2", buy: 750, sell: 150},
+  {name: "Drill", slug: "drill", buy: nil, sell: nil},
+  {name: "Electronic lock", slug: "electronic-lock", buy: 50000, sell: 30000}
 ]
 
 tools.each do |tool|

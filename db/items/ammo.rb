@@ -13,7 +13,8 @@ ammos = [
   {name: "5.7x28", buy: 2000, sell: 400},
   {name: "7.62x54R", buy: 4000, sell: 800},
   {name: "R-5", buy: 2000, sell: 400},
-  {name: "F-10", buy: 3000, sell: 600}
+  {name: "F-10", buy: 3000, sell: 600},
+  {name: "VG-25", buy: 6000, sell: 1200}
 ]
 
 ammos.each do |ammo|
