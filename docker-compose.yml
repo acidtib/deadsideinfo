@@ -1,6 +1,8 @@
 version: '3.3'
 
 volumes:
+  redis-data:
+    driver: local
   postgres-data:
     driver: local
 
@@ -8,6 +10,16 @@ networks:
   internal:
 
 services:
+  redis:
+    image: redis
+    command: redis-server
+    ports: 
+      - 6379:6379
+    volumes: 
+      - redis-data:/data
+    networks:
+      - internal
+
   postgresql:
     image: postgres:10
     ports:
@@ -26,11 +38,30 @@ services:
     command: bundle exec puma -C config/puma.rb
     ports:
       - "3000:3000"
-    volumes:
-      - .:/usr/src/app
+    # volumes:
+      # - .:/usr/src/app
     env_file:
       - .env
     depends_on:
+      - redis
       - postgresql
+    networks:
+      - internal
+
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec sidekiq -c 2
+    env_file:
+      - .env
+    environment:
+      - ENABLE_BOOTSNAP=false
+    depends_on:
+      - app
+      - redis
+      - postgresql
+    # volumes:
+      # - .:/usr/src/app
     networks:
       - internal

@@ -1,0 +1,44 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <div class="page-header-content py-5">
+      <h1 class="page-header-title">
+        <div class="page-header-icon"><i class="fas fa-server" style="font-size: 28px; margin-top: -3px;"></i></div>
+        <span>Servers</span>
+      </h1>
+      <div class="page-header-subtitle"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-12">
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Players</th>
+              <th scope="col">Uptime</th>
+              <th scope="col">IP Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @servers.each do |server| %>
+              <tr>
+                <th scope="row"></th>
+                <td><%= server.name %></td>
+                <td><%= server.players %></td>
+                <td><%= server.id %></td>
+                <td><%= server.address %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>
