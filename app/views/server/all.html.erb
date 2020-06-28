@@ -1,0 +1,45 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <div class="page-header-content py-5">
+      <h1 class="page-header-title">
+        <div class="page-header-icon"><i class="fas fa-server" style="font-size: 28px; margin-top: -3px;"></i></div>
+        <span>Deadside Servers</span>
+      </h1>
+      <div class="page-header-subtitle"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-12">
+
+      <% @servers.each_with_index do |server, index| %>
+        <div class="card mb-3">
+          <div class="row no-gutters">
+            <div class="col-12">
+              <div class="card-body pb-3">
+                <h5 class="card-title mb-2">Rank: <%= index + 1 %></h5>
+                <h5 class="card-title mb-0">Name: <%= server_name(server.name) %></h5>
+                <hr class="mt-1">
+                
+                <div class="row">
+                  <div class="col-6">
+                    <p class="card-text mb-1"><b>Players Online:</b> <%= server.players %></p>
+                    <p class="card-text mb-1"><b>Max Players:</b> <%= server.players_max %></p>
+                  </div>
+
+                  <div class="col-6">
+                    <p class="card-text mb-1"><b>Uptime:</b> <%= distance_of_time_in_words(uptime(server.start_time)) %></p>
+                    <p class="card-text mb-1"><b>IP Address:</b> <%= server.address %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

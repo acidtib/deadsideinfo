@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  players: 1
+  server_version: MyString
+  region: MyString
+  id: MyString
+  server_type: 1
+  last_time: MyString
+  battle_type: 1
+  start_time: MyString
+  state: 1
+  players_max: 1
+  password: 1
+  camera_type: 1
+
+two:
+  players: 1
+  server_version: MyString
+  region: MyString
+  id: MyString
+  server_type: 1
+  last_time: MyString
+  battle_type: 1
+  start_time: MyString
+  state: 1
+  players_max: 1
+  password: 1
+  camera_type: 1
+
+# == Schema Information
+#
+# Table name: servers
+#
+#  id             :bigint           not null, primary key
+#  address        :string
+#  battle_type    :integer
+#  camera_type    :integer
+#  last_time      :string
+#  name           :string
+#  password       :integer
+#  players        :integer
+#  players_max    :integer
+#  region         :string
+#  server_type    :integer
+#  server_version :string
+#  start_time     :string
+#  state          :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#

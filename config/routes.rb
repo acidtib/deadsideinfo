@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get '/server', to: 'server#all', as: 'servers'
+
   get '/materials', to: 'material#all', as: 'materials'
   # get '/materials/:slug', to: 'material#show', as: 'materials_show'
 
@@ -20,6 +22,10 @@ Rails.application.routes.draw do
 
   get '/medicine', to: 'medicine#all', as: 'medicine'
   # get '/medicine/:slug', to: 'medicine#show', as: 'medicine_show'
+
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   root to: 'home#map'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
