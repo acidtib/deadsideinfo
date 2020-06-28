@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get '/server', to: 'server#all', as: 'servers'
+  get '/servers', to: 'server#all', as: 'servers'
 
   get '/materials', to: 'material#all', as: 'materials'
   # get '/materials/:slug', to: 'material#show', as: 'materials_show'
