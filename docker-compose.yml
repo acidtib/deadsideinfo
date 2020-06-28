@@ -38,8 +38,8 @@ services:
     command: bundle exec puma -C config/puma.rb
     ports:
       - "3000:3000"
-    # volumes:
-      # - .:/usr/src/app
+    volumes:
+      - .:/usr/src/app
     env_file:
       - .env
     depends_on:
@@ -61,7 +61,7 @@ services:
       - app
       - redis
       - postgresql
-    # volumes:
-      # - .:/usr/src/app
+    volumes:
+      - .:/usr/src/app
     networks:
       - internal

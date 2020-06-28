@@ -1,20 +1,22 @@
 class CheckServersWorker
   include Sidekiq::Worker
 
-  # CheckServersWorker.perform_async("http://176.57.174.169/dsapi/serverlist")
+  # CheckServersWorker.perform_async({"api_endpoint":"http://176.57.174.169/dsapi/serverlist"})
 
-  def perform(api_endpoint)
-    response = HTTParty.get(URI(api_endpoint))
+  def perform(params)
+
+    endpoint = URI(params["api_endpoint"])
+    response = HTTParty.get(endpoint)
 
     if response.code == 200
       
       response = JSON.parse(response.body)
-
       serverlist = response["serverlist"]
 
       serverlist.each do |server|
 
-        name = server["id"].gsub("_", " ").strip
+        # clean up the name
+        name = server["id"].gsub("_", " ").gsub("*", "").strip.split(" ").join(" ")
 
         data = {
           players: server["players"],
@@ -31,8 +33,8 @@ class CheckServersWorker
           camera_type: server["cameratype"],
           address: server["addr"]
         }
-        
 
+        # lets see if server is already accounted for
         find_server = Server.find_by_address(data[:address])
 
         if find_server
