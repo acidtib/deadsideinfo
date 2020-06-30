@@ -24,7 +24,7 @@ class CreateServerWorker
         camera_type: payload["camera_type"]
       )
 
-      GeoServerWorker.perform_in(5.seconds, new_server.id)
+      GeoServerWorker.perform_in(30.seconds, new_server.id)
     end
       
   end
