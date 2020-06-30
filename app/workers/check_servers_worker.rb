@@ -12,6 +12,7 @@ class CheckServersWorker
       
       response = JSON.parse(response.body)
       serverlist = response["serverlist"]
+      serverlist = serverlist.uniq{|s| s["addr"] }
 
       serverlist.each do |server|
 
