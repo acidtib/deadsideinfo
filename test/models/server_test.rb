@@ -14,6 +14,11 @@ end
 #  address        :string
 #  battle_type    :integer
 #  camera_type    :integer
+#  geo_city       :string
+#  geo_country    :string
+#  geo_lan        :decimal(, )
+#  geo_lon        :decimal(, )
+#  geo_region     :string
 #  last_time      :string
 #  name           :string
 #  password       :integer

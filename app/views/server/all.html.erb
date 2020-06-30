@@ -32,6 +32,9 @@
                   <div class="col-md-6">
                     <p class="card-text mb-1"><b>Uptime:</b> <%= distance_of_time_in_words(uptime(server.start_time)) %></p>
                     <p class="card-text mb-1"><b>IP Address:</b> <%= server.address %></p>
+                    <% if server.geo_region %>
+                      <p class="card-text mb-1"><b>Region:</b> <%= server.geo_region %>, <%= server.geo_country %></p>  
+                    <% end %>
                   </div>
                 </div>
               </div>

@@ -8,7 +8,7 @@ class CreateServerWorker
     find_server = Server.find_by_address(payload["address"])
 
     unless find_server
-      Server.create!(
+      new_server = Server.create!(
         players: payload["players"],
         server_version: payload["server_version"],
         region: payload["region"],
@@ -23,6 +23,8 @@ class CreateServerWorker
         password: payload["password"],
         camera_type: payload["camera_type"]
       )
+
+      GeoServerWorker.perform_in(5.seconds, new_server.id)
     end
       
   end

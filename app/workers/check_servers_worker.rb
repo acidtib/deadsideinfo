@@ -39,10 +39,10 @@ class CheckServersWorker
 
         if find_server
           # update it 
-          UpdateServerWorker.perform_async(find_server.id, data)
+          UpdateServerWorker.perform_in(20.seconds, find_server.id, data)
         else
           # create server
-          CreateServerWorker.perform_async(data)
+          CreateServerWorker.perform_in(5.seconds, data)
         end
       
       end
