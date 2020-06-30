@@ -3,7 +3,8 @@
     <div class="page-header-content py-5">
       <h1 class="page-header-title">
         <div class="page-header-icon"><i class="fas fa-server" style="font-size: 28px; margin-top: -3px;"></i></div>
-        <span>Deadside Servers</span>
+        <span class="mr-md-3">Deadside Servers</span> 
+        <span class="badge badge-primary"><%= @total_servers %></span>
       </h1>
       <div class="page-header-subtitle">Full server list updated every five minutes</div>
     </div>
@@ -12,31 +13,80 @@
 
 <div class="container-fluid mt-4">
   <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="row">
+        <div class="col-md-9 mb-3">
+          <input class="form-control search-input" type="text" placeholder="Search by Server name.." aria-label="Search" name="q" value="<%= params["q"] %>">
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <button type="submit" class="btn btn-outline-success w-100 server-search">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <% if params["order"] || params["per"] %>
+        <div class="dropdown float-right filter-clear ml-1">
+          <a class="btn btn-warning btn-sm" href="#" role="button" id="per-pageMenu" aria-haspopup="true" aria-expanded="false">Clear</a>
+        </div>
+      <% end %>
+
+      <div class="dropdown float-right per-page ml-1">
+        <a class="btn btn-info dropdown-toggle btn-sm" href="#" role="button" id="per-pageMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Per Page: <%= params["per"] %>
+        </a>
+        
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="per-pageMenu">
+          <a class="dropdown-item" href="10">10</a>
+          <a class="dropdown-item" href="20">20</a>
+          <a class="dropdown-item" href="100">100</a>
+          <a class="dropdown-item" href="all">Full List</a>
+        </div>
+      </div>
+
+    </div>
+
     <div class="col-12">
 
-      <% @servers.each_with_index do |server, index| %>
+      <% if @servers.total_count != 0 %>
+        <% @servers.each_with_index do |server, index| %>
+          <div class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-12">
+                <div class="card-body pb-3">
+                  <h5 class="card-title mb-2">Rank: <%= index + 1 %></h5>
+                  <h5 class="card-title mb-0">Name: <%= server_name(server.name) %></h5>
+                  <hr class="mt-1">
+                  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="card-text mb-1"><b>Players Online:</b> <%= server.players %></p>
+                      <p class="card-text mb-1"><b>Max Players:</b> <%= server.players_max %></p>
+                    </div>
+
+                    <div class="col-md-6">
+                      <p class="card-text mb-1"><b>Uptime:</b> <%= distance_of_time_in_words(uptime(server.start_time)) %></p>
+                      <p class="card-text mb-1"><b>IP Address:</b> <%= server.address %></p>
+                      <% if server.geo_region %>
+                        <p class="card-text mb-1"><b>Region:</b> <%= server.geo_region %>, <%= server.geo_country %></p>  
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= paginate @servers %>
+      
+      <% else %>
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-12">
-              <div class="card-body pb-3">
-                <h5 class="card-title mb-2">Rank: <%= index + 1 %></h5>
-                <h5 class="card-title mb-0">Name: <%= server_name(server.name) %></h5>
-                <hr class="mt-1">
-                
-                <div class="row">
-                  <div class="col-md-6">
-                    <p class="card-text mb-1"><b>Players Online:</b> <%= server.players %></p>
-                    <p class="card-text mb-1"><b>Max Players:</b> <%= server.players_max %></p>
-                  </div>
-
-                  <div class="col-md-6">
-                    <p class="card-text mb-1"><b>Uptime:</b> <%= distance_of_time_in_words(uptime(server.start_time)) %></p>
-                    <p class="card-text mb-1"><b>IP Address:</b> <%= server.address %></p>
-                    <% if server.geo_region %>
-                      <p class="card-text mb-1"><b>Region:</b> <%= server.geo_region %>, <%= server.geo_country %></p>  
-                    <% end %>
-                  </div>
-                </div>
+              <div class="card-body pb-3 text-center">
+                <p class="card-text mb-1">Cant find any server with that name: <b><%= params["q"] %></b></p>
               </div>
             </div>
           </div>

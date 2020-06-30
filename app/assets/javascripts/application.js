@@ -105,4 +105,65 @@ $(function() {
      
   })
 
+  // server filters
+  $(".server-search").click(function(event) {
+    event.preventDefault()
+
+    var q = $(".search-input").val()
+    var url = UpdateQueryString('q', q, window.location.href)
+
+    window.location = url
+  });
+
+
+  $(".per-page .dropdown-item").click(function(event) {
+    event.preventDefault()
+
+    var per = $(this).attr('href')
+    var url = UpdateQueryString('per', per, window.location.href)
+
+    window.location = url
+  });
+
+  $(".filter-clear a").click(function() {
+    event.preventDefault()
+    
+    var url = window.location.protocol + "//" + window.location.host + window.location.pathname
+    window.location = url
+  });
+
+  function UpdateQueryString(key, value, url) {
+    if (!url) url = window.location.href;
+    var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi"),
+        hash;
+  
+    if (re.test(url)) {
+        if (typeof value !== 'undefined' && value !== null) {
+            return url.replace(re, '$1' + key + "=" + value + '$2$3');
+        } 
+        else {
+            hash = url.split('#');
+            url = hash[0].replace(re, '$1$3').replace(/(&|\?)$/, '');
+            if (typeof hash[1] !== 'undefined' && hash[1] !== null) {
+                url += '#' + hash[1];
+            }
+            return url;
+        }
+    }
+    else {
+        if (typeof value !== 'undefined' && value !== null) {
+            var separator = url.indexOf('?') !== -1 ? '&' : '?';
+            hash = url.split('#');
+            url = hash[0] + separator + key + '=' + value;
+            if (typeof hash[1] !== 'undefined' && hash[1] !== null) {
+                url += '#' + hash[1];
+            }
+            return url;
+        }
+        else {
+            return url;
+        }
+    }
+  }
+
 });
