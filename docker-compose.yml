@@ -2,9 +2,7 @@ version: '3.3'
 
 volumes:
   redis-data:
-    driver: local
   postgres-data:
-    driver: local
 
 networks:
   internal:
