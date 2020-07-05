@@ -13,6 +13,19 @@ body, html {
   font-size: 18px;
 }
 
+.topnav {
+  .navbar-brand {
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+
 
 @media (max-width: 768px) {
   .leaflet-bottom .leaflet-control {
